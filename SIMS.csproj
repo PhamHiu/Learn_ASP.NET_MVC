@@ -7,7 +7,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="C:\Users\AQUA\Desktop\School\Part_V\Mr.Trieu\ASM\SIMS\Models\.editorconfig" />
     <None Include="wwwroot\sims\assets\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\AQUA\Desktop\School\Part_V\Mr.Trieu\ASM\SIMS\Models\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="document\" />
   </ItemGroup>
 
 </Project>

@@ -3,9 +3,9 @@
 @model SIMS.Models.LoginViewModel
 
 @{
-    // phần khai báo biến
+    // phần khai báo biến và các phụ thuộc 
     Layout = null; // k dùng layout mặc định của chương trình - k cóa header và footer VÌ LOGIN K CÓ
-    string name = "HiuHiu";
+    
 }
 
 
@@ -81,7 +81,26 @@
                             </h4>
                         }
                         <form class="row gap-3" asp-action="Index" method="post" autocomplete="off" novalidate>
-                            <div>   
+                            @* mọi form đều phải có câu lệnh dưới đây để tạo chánh mạo danh cfrs 
+                                ở bên view gửi sẽ có : 
+
+                                ngay dưới mỗi thẻ mở form sẽ luôn có để tạo token csrf 
+                                @Html.AntiForgeryToken()
+
+
+
+
+
+
+
+
+                                bên controller nhận sẽ có  ở dưới ngay sau các method post/put/delete để validate yêu cầu : 
+                                [ValidateAntiForgeryToken]
+
+                            *@
+
+                            @Html.AntiForgeryToken()
+                            <div>
                                 <label class="form-label" for="email">Username</label>
                                 @* cách validate lỗi : 
                                     b1: khởi tạo model của giao diện 
@@ -129,6 +148,8 @@
                                 <button class="btn btn-primary w-100" type="submit">Sign in</button>
                             </div>
                         </form>
+                        @* tao token cfrs *@
+                        @Html.AntiForgeryToken() 
                         <div class="position-relative">
                             <hr>
                             <div class="position-absolute top-50 start-50 translate-middle bg-body px-2 text-body-tertiary text-uppercase small">or</div>
