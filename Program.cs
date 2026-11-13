@@ -12,6 +12,8 @@ namespace SIMS
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
+
             // B5 config conection to Database of SIMS --------------------------------------------------------
             builder.Services.AddDbContext<SimsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSqlServer")));
             //  cấu hình trong file appsettings.json -- cấu hình connectionString );
@@ -19,7 +21,7 @@ namespace SIMS
             // B2 : tạo class SimsDbContext: DbContext của EntityFrameworkCore và khái báotoàn bộ các bảng và các cột kèm ràng buộc của từng cột và relationship     
             // B3 : tạo constructor để truyền các options 
             // B4 : cấu hình trong file appsettings.json -- cấu hình connectionString
-            // b5 : cấu hình 
+            // b5 : cấu hình taij program.cs để tiến hành link giữa file appsettings.json và class SimsDbContext để tiến hành kết nối với database 
 
 
 
@@ -28,7 +30,7 @@ namespace SIMS
 
             //sau khi triển khai kế thừa xong thì phải tiến hành đăng kí các interface để tiến hành link các interface với nhau thì mới hoạt động được 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddScoped<IUserService, UserService>(); 
+            builder.Services.AddScoped<IUserService, UserService>();
 
 
 
@@ -55,6 +57,7 @@ namespace SIMS
 
 
             // Add services to the container.
+            //đăng kí mvc và api controller để tiến hành chạy web
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
@@ -81,6 +84,10 @@ namespace SIMS
                 pattern: "{controller=Login}/{action=index}/{id?}")
                 //pattern: "{controller=Demo}/{action=Product}/{id?}")
                 .WithStaticAssets();
+
+
+            // đăng kí dùng api 
+            app.MapControllers();
 
             app.Run();
         }
